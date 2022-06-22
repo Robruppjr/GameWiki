@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWikiAPI.WebAPI", "GameWikiAPI.WebAPI\GameWikiAPI.WebAPI.csproj", "{F96C4634-69FB-41AD-9165-C55E178B1046}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWikiAPI.Data", "GameWikiAPI.Data\GameWikiAPI.Data.csproj", "{E1521A75-C584-473B-94AA-30EEAFC966B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWikiAPI.Models", "GameWikiAPI.Models\GameWikiAPI.Models.csproj", "{D397C4CF-57A8-4A70-91BF-D7EF6CC75E71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWikiAPI.Services", "GameWikiAPI.Services\GameWikiAPI.Services.csproj", "{C409D8E6-B399-4ECE-9B27-589090FEA8EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F96C4634-69FB-41AD-9165-C55E178B1046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F96C4634-69FB-41AD-9165-C55E178B1046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F96C4634-69FB-41AD-9165-C55E178B1046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F96C4634-69FB-41AD-9165-C55E178B1046}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1521A75-C584-473B-94AA-30EEAFC966B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1521A75-C584-473B-94AA-30EEAFC966B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1521A75-C584-473B-94AA-30EEAFC966B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1521A75-C584-473B-94AA-30EEAFC966B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D397C4CF-57A8-4A70-91BF-D7EF6CC75E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D397C4CF-57A8-4A70-91BF-D7EF6CC75E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D397C4CF-57A8-4A70-91BF-D7EF6CC75E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D397C4CF-57A8-4A70-91BF-D7EF6CC75E71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C409D8E6-B399-4ECE-9B27-589090FEA8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C409D8E6-B399-4ECE-9B27-589090FEA8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C409D8E6-B399-4ECE-9B27-589090FEA8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C409D8E6-B399-4ECE-9B27-589090FEA8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
