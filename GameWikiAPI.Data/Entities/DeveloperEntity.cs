@@ -17,4 +17,6 @@ using System.Threading.Tasks;
         public string CEO {get;set;}
 
         public List<GameEntity> Games {get;set;}
+
+        // public List<CharacterEntity> Characters {get;set;}
     }

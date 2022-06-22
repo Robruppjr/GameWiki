@@ -11,4 +11,6 @@ public class ApplicationDbContext : DbContext
             {
 
             }
+
+            public DbSet<DeveloperEntity> Developers {get;set;}
     }
