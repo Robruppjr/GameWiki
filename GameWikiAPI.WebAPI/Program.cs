@@ -20,7 +20,7 @@ builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => 
 {
-    c.SwaggerDoc("vq" , new OpenApiInfo {Title = "GameWikiAPI.WebAPI", Version = "v1"});
+    c.SwaggerDoc("v1" , new OpenApiInfo {Title = "GameWikiAPI.WebAPI", Version = "v1"});
 });
 
 var app = builder.Build();

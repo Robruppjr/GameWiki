@@ -14,7 +14,8 @@ using System.Threading.Tasks;
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-        // [ForeignKey(nameof(Developer))]
-        // public int DevId { get; set; }
-        // public virtual DeveloperEntity Developer { get; set; }
+        [ForeignKey(nameof(Developer))]
+        public int DevId { get; set; }
+        public virtual DeveloperEntity Developer { get; set; }
+        // public List<CharacterEntity> Characters { get; set; }
     }
