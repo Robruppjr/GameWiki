@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
     public interface IGameService
     {
-        
+        Task<bool> CreateGameAsync(GameCreate request);
     }
