@@ -15,11 +15,12 @@ builder.Services.AddHttpContextAccessor();
 // builder.Services.AddScoped<IDeveloperService, DeveloperService>();
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IGameService, GameService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => 
 {
-    c.SwaggerDoc("vq" , new OpenApiInfo {Title = "GameWikiAPI.WebAPI", Version = "v1"});
+    c.SwaggerDoc("v1" , new OpenApiInfo {Title = "GameWikiAPI.WebAPI", Version = "v1"});
 });
 
 var app = builder.Build();

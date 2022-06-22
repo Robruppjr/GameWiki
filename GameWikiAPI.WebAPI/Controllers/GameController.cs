@@ -6,25 +6,32 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-
+    [ApiController]
     [Route("[controller]")]
     public class GameController : Controller
     {
+        private readonly IGameService _gameService;
         private readonly ILogger<GameController> _logger;
 
-        public GameController(ILogger<GameController> logger)
+        public GameController(ILogger<GameController> logger, IGameService gameService)
         {
             _logger = logger;
+            _gameService = gameService;
         }
 
-        public IActionResult Index()
+        [HttpPost]
+        public async Task<IActionResult> CreateGame([FromBody] GameCreate request)
         {
-            return View();
-        }
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var gameCreateResult = await _gameService.CreateGameAsync(request);
+            if(gameCreateResult)
+            {
+                return Ok("Game has been added to GameWIKI");
+            }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
+            return BadRequest("Failed to add Game to the GameWIKI");
         }
     }
