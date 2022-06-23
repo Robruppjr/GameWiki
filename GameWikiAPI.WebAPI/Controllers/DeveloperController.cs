@@ -47,6 +47,20 @@ using Microsoft.AspNetCore.Mvc;
             return Ok(developerDetail);
         }
 
+        [HttpGet("All")]
+        public async Task<IActionResult> GetAllDevelopers()
+        {
+            var developers = await _developerService.GetAllDevelopersAsync();
+            return Ok(developers);
+        }
+
+        [HttpGet("Alphabetically")]
+        public async Task<IActionResult> GetAllDevelopersAlphabetically()
+        {
+            var developers = await _developerService.GetAllDevelopersAlphabeticallyAsync();
+            return Ok(developers);
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateDeveloperById([FromBody] DeveloperEdit request)
         {
