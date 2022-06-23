@@ -9,6 +9,6 @@ public class ApplicationDbContext : DbContext
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
             {
-
             }
+            public DbSet<CharacterEntity> Character { get; set; }
     }
