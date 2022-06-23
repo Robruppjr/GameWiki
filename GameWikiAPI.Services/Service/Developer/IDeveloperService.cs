@@ -13,4 +13,8 @@ using System.Threading.Tasks;
         Task<bool> UpdateDeveloperAsync(DeveloperEdit request);
 
         Task<bool> DeleteDeveloperAsync(int developerId);
+
+        Task<IEnumerable<DeveloperList>> GetAllDevelopersAsync();
+
+        Task<IEnumerable<DeveloperList>> GetAllDevelopersAlphabeticallyAsync();
     }

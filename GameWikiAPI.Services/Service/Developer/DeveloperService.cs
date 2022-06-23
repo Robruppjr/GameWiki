@@ -2,27 +2,34 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
-
-    public class DeveloperService : IDeveloperService
+public class DeveloperService : IDeveloperService
     {
         private readonly ApplicationDbContext _context;
 
         private readonly IDeveloperService _developerService;
 
+        private readonly int _developerId;
+
+        public DeveloperService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task<bool> CreateDeveloperAsync (DeveloperCreate developerCreate)
         {
             DeveloperEntity developer = new DeveloperEntity
             {
-                Id = developerCreate.Id,
+                Id = _developerId,
                 Name = developerCreate.Name,
                 YearCreated = developerCreate.YearCreated,
                 CEO = developerCreate.CEO
             };
 
-            _context.Developers.Add(developer);
+            await _context.Developers.AddAsync(developer);
             var numberOfChanges = await _context.SaveChangesAsync();
-            return numberOfChanges ==1;
+            return numberOfChanges == 1;
         }
 
         public async Task<DeveloperDetail> GetDeveloperByIdASync(int developerId)
@@ -77,6 +84,36 @@ using System.Threading.Tasks;
            _context.Developers.Remove(developerEntity);
            return await _context.SaveChangesAsync()==1;
        }
+       
+       public async Task<IEnumerable<DeveloperList>> GetAllDevelopersAsync()
+       {
+            var developers = await _context.Developers
+            .Select(entity => new DeveloperList
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                YearCreated = entity.YearCreated,
+                CEO = entity.CEO
+            }).ToListAsync();
+
+            return developers;
+       }
+
+        public async Task<IEnumerable<DeveloperList>> GetAllDevelopersAlphabeticallyAsync()
+       {
+            var developers = await _context.Developers
+            .Select(entity => new DeveloperList
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                YearCreated = entity.YearCreated,
+                CEO = entity.CEO
+            }).OrderBy(c => c.Name).ToListAsync();
+
+            return developers;
+       }
+
+
     }
 
     

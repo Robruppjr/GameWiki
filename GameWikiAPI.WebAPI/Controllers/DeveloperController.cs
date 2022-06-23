@@ -24,6 +24,7 @@ using Microsoft.AspNetCore.Mvc;
             {
                 return BadRequest(ModelState);
             }
+
             if(await _developerService.CreateDeveloperAsync(request))
             {
                 return Ok("Developer was created.");
@@ -44,6 +45,20 @@ using Microsoft.AspNetCore.Mvc;
                 }
             
             return Ok(developerDetail);
+        }
+
+        [HttpGet("All")]
+        public async Task<IActionResult> GetAllDevelopers()
+        {
+            var developers = await _developerService.GetAllDevelopersAsync();
+            return Ok(developers);
+        }
+
+        [HttpGet("Alphabetically")]
+        public async Task<IActionResult> GetAllDevelopersAlphabetically()
+        {
+            var developers = await _developerService.GetAllDevelopersAlphabeticallyAsync();
+            return Ok(developers);
         }
 
         [HttpPut]

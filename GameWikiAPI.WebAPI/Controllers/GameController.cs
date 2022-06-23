@@ -34,4 +34,19 @@ using Microsoft.Extensions.Logging;
 
             return BadRequest("Failed to add Game to the GameWIKI");
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllGames()
+        {
+            var games = await _gameService.GetAllGamesAsync();
+            return Ok(games);
+        }
+        // Get api/Game/gameId
+        [HttpGet("{gameId:int}")]
+        public async Task<IActionResult> GetGameById([FromRoute] int gameId)
+        {
+                var detail = await _gameService.GetGameByIdAsync(gameId);
+                return detail is not null
+                    ? Ok(detail)
+                    : NotFound();
+        }
     }
