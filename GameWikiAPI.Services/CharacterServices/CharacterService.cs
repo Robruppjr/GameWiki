@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 
 
-         public class CharacterService : ICharacterService
+    public class CharacterService : ICharacterService
     {
         private readonly int _characterId;
         private readonly ApplicationDbContext _context;
