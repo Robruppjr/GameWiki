@@ -42,8 +42,7 @@ using Microsoft.Extensions.Logging;
             return Ok(games);
         }
         // Get api/Game/gameId
-        [HttpGet("Get game by Id")]
-        [Route("{gameId:int}")]
+        [HttpGet("{gameId:int}")]
         public async Task<IActionResult> GetGameById([FromRoute] int gameId)
         {
                 var detail = await _gameService.GetGameByIdAsync(gameId);
@@ -61,7 +60,7 @@ using Microsoft.Extensions.Logging;
                     ? Ok("Game was updated successfully.")
                     : BadRequest("Game could not be updated.");
         }
-        [HttpDelete("Delete a Game")]
+        [HttpDelete]
         [Route("{gameId}")]
         public async Task<IActionResult> DeleteGame([FromRoute] int gameId)
         {
