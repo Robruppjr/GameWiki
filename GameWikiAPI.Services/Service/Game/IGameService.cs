@@ -9,4 +9,6 @@ public interface IGameService
         Task<bool> CreateGameAsync(GameCreate request);
         Task<IEnumerable<GameListDTO>> GetAllGamesAsync();
         Task<GameDetailDTO> GetGameByIdAsync (int gameId);
+        Task<bool> UpdateGameAsync(GameEditDTO request);
+        Task<bool> DeleteGameAsync(int gameId);
     }

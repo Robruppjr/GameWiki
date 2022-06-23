@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using GameWikiAPI.Models.Model.Game;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -19,7 +20,7 @@ using Microsoft.Extensions.Logging;
             _gameService = gameService;
         }
 
-        [HttpPost]
+        [HttpPost("Create Game")]
         public async Task<IActionResult> CreateGame([FromBody] GameCreate request)
         {
             if(!ModelState.IsValid)
@@ -34,7 +35,7 @@ using Microsoft.Extensions.Logging;
 
             return BadRequest("Failed to add Game to the GameWIKI");
         }
-        [HttpGet]
+        [HttpGet("Get all Games")]
         public async Task<IActionResult> GetAllGames()
         {
             var games = await _gameService.GetAllGamesAsync();
@@ -48,5 +49,23 @@ using Microsoft.Extensions.Logging;
                 return detail is not null
                     ? Ok(detail)
                     : NotFound();
+        }
+        [HttpPut("Update a Game")]
+        public async Task<IActionResult> UpdateGameById([FromBody] GameEditDTO request)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return await _gameService.UpdateGameAsync(request)
+                    ? Ok("Game was updated successfully.")
+                    : BadRequest("Game could not be updated.");
+        }
+        [HttpDelete]
+        [Route("{gameId}")]
+        public async Task<IActionResult> DeleteGame([FromRoute] int gameId)
+        {
+            return await _gameService.DeleteGameAsync(gameId)
+                ? Ok($"Game {gameId} was deleted succesfully.")
+                : BadRequest($"{gameId} could not be deleted.");
         }
     }
