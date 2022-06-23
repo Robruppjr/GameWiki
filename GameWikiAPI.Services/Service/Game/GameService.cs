@@ -44,7 +44,7 @@ public class GameService : IGameService
 
     public async Task<GameDetailDTO> GetGameByIdAsync(int gameId)
     {
-        var gameEntity = await _context.Game.FirstOrDefaultAsync(e => e.Id == gameId && e.DevId == _devId);
+        var gameEntity = await _context.Game.FindAsync(gameId);
         
         return gameEntity is null ? null : new GameDetailDTO
             {

@@ -20,7 +20,7 @@ using System.Threading.Tasks;
                 CEO = developerCreate.CEO
             };
 
-            _context.Developers.Add(developer);
+            await _context.Developers.AddAsync(developer);
             var numberOfChanges = await _context.SaveChangesAsync();
             return numberOfChanges ==1;
         }
