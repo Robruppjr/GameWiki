@@ -24,6 +24,7 @@ using Microsoft.AspNetCore.Mvc;
             {
                 return BadRequest(ModelState);
             }
+
             if(await _developerService.CreateDeveloperAsync(request))
             {
                 return Ok("Developer was created.");
