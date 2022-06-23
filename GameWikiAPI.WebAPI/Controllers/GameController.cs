@@ -41,6 +41,12 @@ using Microsoft.Extensions.Logging;
             var games = await _gameService.GetAllGamesAsync();
             return Ok(games);
         }
+        [HttpGet("GamesByDevId/{devId:int}")]
+        public async Task<IActionResult> GetGamesByDevId([FromRoute] int devId)
+        {
+            var games = await _gameService.GetAllGamesByDevId(devId);
+            return Ok(games);
+        }
         // Get api/Game/gameId
         [HttpGet("{gameId:int}")]
         public async Task<IActionResult> GetGameById([FromRoute] int gameId)
