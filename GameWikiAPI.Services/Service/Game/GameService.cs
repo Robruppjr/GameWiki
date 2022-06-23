@@ -29,10 +29,11 @@ public class GameService : IGameService
         return numberOfChanges == 1;
         }
 
+
     public async Task<IEnumerable<GameListDTO>> GetAllGamesAsync()
     {
         var games = await _context.Game
-            .Where(entity => entity.DevId == _devId)
+            // .Where(entity => entity.DevId == _devId)
             .Select(entity => new GameListDTO
             {
                 Id = entity.Id,
@@ -54,4 +55,27 @@ public class GameService : IGameService
             };
     }
 
+    public async Task<bool> UpdateGameAsync(GameEditDTO request)
+    {
+        var gameEntity = await _context.Game.FindAsync(request.Id);
+
+        if (gameEntity == null)
+            return false;
+        else
+            gameEntity.Id = request.Id;
+            gameEntity.Name = request.Name;
+            gameEntity.Description = request.Description;
+
+        var numberOfChanges = await _context.SaveChangesAsync();
+        return numberOfChanges == 1;
+    }
+    public async Task<bool> DeleteGameAsync(int gameId)
+    {
+        var gameEntity = await _context.Game.FindAsync(gameId);
+
+        if(gameEntity == null)
+            return false;
+        _context.Game.Remove(gameEntity);
+        return await _context.SaveChangesAsync() == 1;
+    }
 }
