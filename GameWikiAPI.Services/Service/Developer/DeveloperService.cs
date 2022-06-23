@@ -10,19 +10,26 @@ using System.Threading.Tasks;
 
         private readonly IDeveloperService _developerService;
 
+        private readonly int _developerId;
+
+        public DeveloperService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task<bool> CreateDeveloperAsync (DeveloperCreate developerCreate)
         {
             DeveloperEntity developer = new DeveloperEntity
             {
-                Id = developerCreate.Id,
+                Id = _developerId,
                 Name = developerCreate.Name,
                 YearCreated = developerCreate.YearCreated,
                 CEO = developerCreate.CEO
             };
 
-            _context.Developers.Add(developer);
+            await _context.Developers.AddAsync(developer);
             var numberOfChanges = await _context.SaveChangesAsync();
-            return numberOfChanges ==1;
+            return numberOfChanges == 1;
         }
 
         public async Task<DeveloperDetail> GetDeveloperByIdASync(int developerId)

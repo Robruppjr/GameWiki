@@ -13,6 +13,6 @@ public class ApplicationDbContext : DbContext
 
         public DbSet<DeveloperEntity> Developers {get;set;}
 
-                public DbSet<GameEntity> Game {get; set;} 
+        public DbSet<GameEntity> Game {get; set;} 
 
     }
