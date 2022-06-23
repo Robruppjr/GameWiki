@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 
         public string Name {get;set;}
 
-        public DateTime YearCreated {get;set;}
-
         public string CEO {get;set;}
 
     }
