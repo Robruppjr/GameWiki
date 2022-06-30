@@ -8,5 +8,5 @@ using System.Threading.Tasks;
     {
         Task<bool> CreateCharacterAsync(CharacterCreateDTO request);
         Task<CharacterDetailDTO> GetCharacterByIdASync (int characterId);
-        Task<CharacterDetailDTO> GetCharacterByGameIdASync (int characterId);
+        // Task<CharacterDetailDTO> GetCharacterByGameIdASync (int gameId);
     }
