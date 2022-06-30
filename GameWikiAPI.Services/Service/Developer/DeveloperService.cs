@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameWikiAPI.Models.Model.Game;
 using Microsoft.EntityFrameworkCore;
 
 public class DeveloperService : IDeveloperService
@@ -9,6 +10,8 @@ public class DeveloperService : IDeveloperService
         private readonly ApplicationDbContext _context;
 
         private readonly IDeveloperService _developerService;
+
+        private readonly IGameService _gameService;
 
         private readonly int _developerId;
 
@@ -40,19 +43,39 @@ public class DeveloperService : IDeveloperService
                 return null;
             }
 
+            int devId = developerId;
+
+            //  var gameEntity = await _context.Game.Select(entity => new GameListDTO
+            // {
+            //     Id = entity.Id,
+            //     Name = entity.Name
+            // }).ToListAsync();
+
+            // var games = _gameService.GetAllGamesByDevId(developerId);
+        
+            
+           
+
             var developerDetail = new DeveloperDetail
             {
                 Id = developerEntity.Id,
                 Name = developerEntity.Name,
                 YearCreated = developerEntity.YearCreated,
                 CEO = developerEntity.CEO,
-                Games = developerEntity.Games,
+                Games = await _context.Game.Select(games => new GameListDTO
+                {
+                    Id = games.Id,
+                    Name = games.Name
+
+                }).ToListAsync()          
                 // Characters = developerEntity.Characters
             
             };
 
             return developerDetail;
         }
+
+        // public async Task<IEnumerable<GameListDTO>> GetListOfGamesByDevId(int devId)
 
         //Update
         public async Task<bool> UpdateDeveloperAsync(DeveloperEdit request)

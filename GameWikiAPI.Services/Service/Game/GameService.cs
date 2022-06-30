@@ -78,4 +78,15 @@ public class GameService : IGameService
         _context.Game.Remove(gameEntity);
         return await _context.SaveChangesAsync() == 1;
     }
+
+    public async Task<IEnumerable<GameListDTO>> GetAllGamesByDevId(int devId)
+    {
+        var gameEntity = await _context.Game.Select(entity => new GameListDTO
+        {
+            Id = entity.Id,
+            Name = entity.Name
+        }).ToListAsync();
+
+        return gameEntity;
+    }
 }

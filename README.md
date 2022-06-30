@@ -1,5 +1,6 @@
 # GameWiki
 
+
 GameWiki is a database for videogames. It includes game developers, games, and game characters. 
 
 The DeveloperEntity is the parent with GameEntity being its child and CharacterEntity being the child of GameEntity.
@@ -23,3 +24,4 @@ Julia
 - DeveloperController
 
 ...
+
