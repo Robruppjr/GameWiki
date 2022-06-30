@@ -46,20 +46,20 @@ using System.Threading.Tasks;
         return characterDetail;
     }
 
-        public async Task<CharacterDetailDTO> GetCharacterByGameIdASync(int gameId)
-    {
-        var characterEntity = await _context.Character.FindAsync(gameId);
-        if (characterEntity is null)
-            return null;
+    //     public async Task<CharacterDetailDTO> GetCharacterByGameIdASync(int gameId)
+    // {
+    //     var characterEntity = await _context.Character.FindAsync(gameId);
+    //     if (characterEntity is null)
+    //         return null;
 
-        var characterDetail = new CharacterDetailDTO
-        {
-            Id = characterEntity.Id,
-            Name = characterEntity.Name,
-            Description = characterEntity.Description,
-            GameId = characterEntity.GameId,
-        };
+    //     var characterDetail = new CharacterDetailDTO
+    //     {
+    //         Id = characterEntity.Id,
+    //         Name = characterEntity.Name,
+    //         Description = characterEntity.Description,
+    //         GameId = characterEntity.GameId,
+    //     };
 
-        return characterDetail;
-    }
+    //     return characterDetail;
+    // }
 }
