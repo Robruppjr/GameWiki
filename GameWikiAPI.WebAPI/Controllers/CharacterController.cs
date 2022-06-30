@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Mvc;
             _characterService = characterService;
         }
 
-        [HttpPost("Create Character")]
+        [HttpPost("Add Character")]
         public async Task<IActionResult> CreateCharacter([FromBody] CharacterCreateDTO request)
         {
             if (!ModelState.IsValid)
@@ -46,4 +46,19 @@ using Microsoft.AspNetCore.Mvc;
             
             return Ok(characterDetail);
         }
+
+        [HttpGet("{characterGameId:int}")]
+        public async Task<IActionResult> GetByGameId([FromRoute] int characterGameId)
+        {
+            var characterDetail = await _characterService.GetCharacterByIdASync(characterGameId);
+
+            if(characterDetail is null)
+                {
+                    return NotFound();
+                }
+            
+            return Ok(characterDetail);
+        }
+
+
     }
