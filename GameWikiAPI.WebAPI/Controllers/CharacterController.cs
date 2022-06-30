@@ -50,7 +50,7 @@ using Microsoft.AspNetCore.Mvc;
         [HttpGet("{characterGameId:int}")]
         public async Task<IActionResult> GetByGameId([FromRoute] int characterGameId)
         {
-            var characterDetail = await _characterService.GetCharacterByIdASync(characterGameId);
+            var characterDetail = await _characterService.GetCharacterByGameIdASync(characterGameId);
 
             if(characterDetail is null)
                 {
