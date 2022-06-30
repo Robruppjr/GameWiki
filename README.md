@@ -6,7 +6,7 @@ The DeveloperEntity is the parent with GameEntity being its child and CharacterE
 
 DeveloperEntity contains the Primary Key, Id, and properties Name, YearCreated, CEO, and a list of games that are connected to each developer. 
 
-GameEntity ...
+GameEntity contains the Primary Key, Id, and properties name, game description, and a ForiegnId DevId, and a list of characters that are connected to the each game.
 
 CharacterEntity contains an Id, name, character description, and a gameId for the game the character is from.
 
@@ -28,4 +28,8 @@ Chris
 - Character Services
 - Character Controller
 
-...
+Rob
+-GameEntity
+-GameModels
+-GameService / IGameService
+-GameController
