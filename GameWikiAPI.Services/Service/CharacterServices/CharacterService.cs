@@ -63,4 +63,3 @@ using System.Threading.Tasks;
         return characterDetail;
     }
 }
-    

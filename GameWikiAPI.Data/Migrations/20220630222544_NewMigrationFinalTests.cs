@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GameWikiAPI.Data.Migrations
 {
-    public partial class NewMigration5 : Migration
+    public partial class NewMigrationFinalTests : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
