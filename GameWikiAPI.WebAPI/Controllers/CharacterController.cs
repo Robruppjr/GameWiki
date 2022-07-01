@@ -47,18 +47,6 @@ using Microsoft.AspNetCore.Mvc;
             return Ok(characterDetail);
         }
 
-        //[HttpGet("{characterGameId:int}")]
-       // public async Task<IActionResult> GetByGameId([FromRoute] int characterGameId)
-      //  {
-          //  var characterDetail = await _characterService.GetCharacterByGameIdASync(characterGameId);
-
-           // if(characterDetail is null)
-             //   {
-               //     return NotFound();
-               // }
-            
-         //   return Ok(characterDetail);
-      //  }
 
         [HttpPut("Update Character")]
         public async Task<IActionResult> UpdateCharacterById([FromBody] CharacterEditDTO request)
