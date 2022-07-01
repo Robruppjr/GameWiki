@@ -27,7 +27,7 @@ Chris
 - Character Controller
 
 Rob
--Game Entity
--Game Models
--Game Service / IGameService
--ServiceController
+- Game Entity
+- Game Models
+- Game Service / IGameService
+- ServiceController
