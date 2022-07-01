@@ -70,7 +70,6 @@ using System.Threading.Tasks;
         return await _context.SaveChangesAsync() == 1;
 
     }
-
     // public async Task<CharacterDetailDTO> GetCharacterByGameIdASync(int gameId)
     // {
     //     var characterEntity = await _context.Character.FindAsync(gameId);
