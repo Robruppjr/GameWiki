@@ -46,11 +46,10 @@ using Microsoft.AspNetCore.Mvc;
             
             return Ok(characterDetail);
         }
-
-        // [HttpGet("{gameId:int}")]
-        // public async Task<IActionResult> GetByGameId([FromRoute] int gameId)
+        // [HttpGet("{characterGameId:int}")]
+        // public async Task<IActionResult> GetByGameId([FromRoute] int characterGameId)
         // {
-        //     var characterDetail = await _characterService.GetCharacterByIdASync(gameId);
+        //     var characterDetail = await _characterService.GetCharacterByGameIdASync(characterGameId);
 
         //     if(characterDetail is null)
         //         {
@@ -59,6 +58,26 @@ using Microsoft.AspNetCore.Mvc;
             
         //     return Ok(characterDetail);
         // }
+
+        [HttpPut("Update Character")]
+        public async Task<IActionResult> UpdateCharacterById([FromBody] CharacterEditDTO request)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return await _characterService.UpdateCharacterAsync(request)
+                ? Ok("Character was updated successfuly.")
+                : BadRequest("Character could not be updated.");
+        }
+
+        [HttpDelete]
+        [Route("{characterId}")]
+        public async Task<IActionResult> DeleteCharacter([FromRoute] int characterId)
+        {
+            return await _characterService.DeleteCharacterAsync(characterId)
+                ? Ok($"Character {characterId} was deleted successfully.")
+                : BadRequest($"{characterId} could not be deleted.");
+        }
 
 
     }

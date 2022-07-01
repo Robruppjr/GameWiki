@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameWikiAPI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220623213637_NewMigrations6_23")]
-    partial class NewMigrations6_23
+    [Migration("20220630222544_NewMigrationFinalTests")]
+    partial class NewMigrationFinalTests
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

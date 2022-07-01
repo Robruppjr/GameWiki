@@ -42,6 +42,8 @@ namespace GameWikiAPI.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GameId");
+
                     b.ToTable("Character");
                 });
 
@@ -95,6 +97,17 @@ namespace GameWikiAPI.Data.Migrations
                     b.ToTable("Game");
                 });
 
+            modelBuilder.Entity("CharacterEntity", b =>
+                {
+                    b.HasOne("GameEntity", "Game")
+                        .WithMany("Characters")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+                });
+
             modelBuilder.Entity("GameEntity", b =>
                 {
                     b.HasOne("DeveloperEntity", "Developer")
@@ -109,6 +122,11 @@ namespace GameWikiAPI.Data.Migrations
             modelBuilder.Entity("DeveloperEntity", b =>
                 {
                     b.Navigation("Games");
+                });
+
+            modelBuilder.Entity("GameEntity", b =>
+                {
+                    b.Navigation("Characters");
                 });
 #pragma warning restore 612, 618
         }
