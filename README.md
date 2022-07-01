@@ -9,9 +9,8 @@ GameEntity contains the Priamry Key, Id, and properties of Name, Description, De
 
 CharacterEntity contains an Id, name, character description, and game character is in.
 
-Developer, Game, and Character all have the methods to create, read, update, and delete. 
-In addition to these, developer can be gotten alphabetically.
-...
+Developer, Game, and Character all have the methods to create, read(all and by id), update, and delete. 
+In addition to these, developer can be gotten alphabetically and games can be gotten by developer.
 
 Contribution: 
 
