@@ -14,6 +14,7 @@ public class CharacterEntity
     public string Name {get; set;}
     [Required]
     public string Description {get; set;}
-    //[ForeignKey(nameof(Game))]
+    [ForeignKey(nameof(Game))]
     public int GameId {get; set;}
+    public virtual GameEntity Game {get; set;}
 }

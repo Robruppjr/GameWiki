@@ -46,18 +46,37 @@ using Microsoft.AspNetCore.Mvc;
             
             return Ok(characterDetail);
         }
+        // [HttpGet("{characterGameId:int}")]
+        // public async Task<IActionResult> GetByGameId([FromRoute] int characterGameId)
+        // {
+        //     var characterDetail = await _characterService.GetCharacterByGameIdASync(characterGameId);
 
-        [HttpGet("{characterGameId:int}")]
-        public async Task<IActionResult> GetByGameId([FromRoute] int characterGameId)
-        {
-            var characterDetail = await _characterService.GetCharacterByIdASync(characterGameId);
-
-            if(characterDetail is null)
-                {
-                    return NotFound();
-                }
+        //     if(characterDetail is null)
+        //         {
+        //             return NotFound();
+        //         }
             
-            return Ok(characterDetail);
+        //     return Ok(characterDetail);
+        // }
+
+        [HttpPut("Update Character")]
+        public async Task<IActionResult> UpdateCharacterById([FromBody] CharacterEditDTO request)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return await _characterService.UpdateCharacterAsync(request)
+                ? Ok("Character was updated successfuly.")
+                : BadRequest("Character could not be updated.");
+        }
+
+        [HttpDelete]
+        [Route("{characterId}")]
+        public async Task<IActionResult> DeleteCharacter([FromRoute] int characterId)
+        {
+            return await _characterService.DeleteCharacterAsync(characterId)
+                ? Ok($"Character {characterId} was deleted successfully.")
+                : BadRequest($"{characterId} could not be deleted.");
         }
 
 

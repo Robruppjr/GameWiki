@@ -45,22 +45,45 @@ using System.Threading.Tasks;
 
         return characterDetail;
     }
-
-        public async Task<CharacterDetailDTO> GetCharacterByGameIdASync(int gameId)
+    public async Task<bool> UpdateCharacterAsync(CharacterEditDTO request)
     {
-        var characterEntity = await _context.Character.FindAsync(gameId);
-        if (characterEntity is null)
-            return null;
+        var characterEntity = await _context.Character.FindAsync(request.Id);
 
-        var characterDetail = new CharacterDetailDTO
-        {
-            Id = characterEntity.Id,
-            Name = characterEntity.Name,
-            Description = characterEntity.Description,
-            GameId = characterEntity.GameId,
-        };
+        if (characterEntity == null)
+            return false;
+        else
+            characterEntity.Id = request.Id;
+            characterEntity.Name = request.Name;
+            characterEntity.Description = request.Description;
 
-        return characterDetail;
+        var numberOfChanges = await _context.SaveChangesAsync();
+        return numberOfChanges == 1;
     }
+
+     public async Task<bool> DeleteCharacterAsync(int characterId)
+    {
+        var characterEntity = await _context.Character.FindAsync(characterId);
+
+        if(characterEntity == null)
+        return false;
+        _context.Character.Remove(characterEntity);
+        return await _context.SaveChangesAsync() == 1;
+
+    }
+    // public async Task<CharacterDetailDTO> GetCharacterByGameIdASync(int gameId)
+    // {
+    //     var characterEntity = await _context.Character.FindAsync(gameId);
+    //     if (characterEntity is null)
+    //         return null;
+
+    //     var characterDetail = new CharacterDetailDTO
+    //     {
+    //         Id = characterEntity.Id,
+    //         Name = characterEntity.Name,
+    //         Description = characterEntity.Description,
+    //         GameId = characterEntity.GameId,
+    //     };
+
+    //     return characterDetail;
+    // }
 }
-    
