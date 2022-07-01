@@ -7,9 +7,9 @@ DeveloperEntity contains the Primary Key, Id, and properties Name, YearCreated, 
 
 GameEntity ...
 
-CharacterEntity ...
+CharacterEntity contains an Id, name, character description, and game character is in.
 
-Developer, Game, and Character all have the methods to create, read(all or by id), update, and delete. 
+Developer, Game, and Character all have the methods to create, read, update, and delete. 
 In addition to these, developer can be gotten alphabetically.
 ...
 
@@ -21,4 +21,8 @@ Julia
 - DeveloperService / IDeveloperService
 - DeveloperController
 
-...
+Chris
+- Character Entity
+- Character Models
+- Character Services
+- Character Controller
