@@ -10,6 +10,8 @@ public class GameService : IGameService
     private readonly int _gameId;
     private readonly int _devId;
     private readonly ApplicationDbContext _context;
+    private IGameService _gameService;
+    private readonly ICharacterService _characterService;
 
     public GameService(ApplicationDbContext context)
     {
@@ -51,7 +53,13 @@ public class GameService : IGameService
             {
                 Id = gameEntity.Id,
                 Name = gameEntity.Name,
-                Description = gameEntity.Description
+                Description = gameEntity.Description,
+                Characters = await _context.Character.Select(characters => new CharacterList
+                {
+                    Id = characters.Id,
+                    Name = characters.Name
+                }).ToListAsync()
+
             };
     }
 

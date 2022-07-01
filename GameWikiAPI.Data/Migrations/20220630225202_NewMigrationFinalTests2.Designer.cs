@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameWikiAPI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220623004812_NewMigration5")]
-    partial class NewMigration5
+    [Migration("20220630225202_NewMigrationFinalTests2")]
+    partial class NewMigrationFinalTests2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,8 @@ namespace GameWikiAPI.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GameId");
 
                     b.ToTable("Character");
                 });
@@ -97,6 +99,17 @@ namespace GameWikiAPI.Data.Migrations
                     b.ToTable("Game");
                 });
 
+            modelBuilder.Entity("CharacterEntity", b =>
+                {
+                    b.HasOne("GameEntity", "Game")
+                        .WithMany("Characters")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+                });
+
             modelBuilder.Entity("GameEntity", b =>
                 {
                     b.HasOne("DeveloperEntity", "Developer")
@@ -111,6 +124,11 @@ namespace GameWikiAPI.Data.Migrations
             modelBuilder.Entity("DeveloperEntity", b =>
                 {
                     b.Navigation("Games");
+                });
+
+            modelBuilder.Entity("GameEntity", b =>
+                {
+                    b.Navigation("Characters");
                 });
 #pragma warning restore 612, 618
         }

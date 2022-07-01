@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameWikiAPI.Models.Model.Game;
 
-
-    public class DeveloperDetail
+public class DeveloperDetail
     {
         public int Id {get;set;}
 
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
         public string CEO {get;set;}
 
-        public List<GameEntity> Games {get;set;}
+        public IEnumerable<GameListDTO> Games {get;set;}
 
         // public List<CharacterEntity> Characters {get;set;}
     }
