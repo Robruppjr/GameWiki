@@ -60,5 +60,25 @@ using Microsoft.AspNetCore.Mvc;
             return Ok(characterDetail);
         }
 
+        [HttpPut("Update Character")]
+        public async Task<IActionResult> UpdateCharacterById([FromBody] CharacterEditDTO request)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return await _characterService.UpdateCharacterAsync(request)
+                ? Ok("Character was updated successfuly.")
+                : BadRequest("Character could not be updated.");
+        }
+
+        [HttpDelete]
+        [Route("{characterId}")]
+        public async Task<IActionResult> DeleteCharacter([FromRoute] int characterId)
+        {
+            return await _characterService.DeleteCharacterAsync(characterId)
+                ? Ok($"Character {characterId} was deleted successfully.")
+                : BadRequest($"{characterId} could not be deleted.");
+        }
+
 
     }
